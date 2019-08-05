@@ -1,0 +1,12 @@
+$sizes: (
+  small: 12px,
+  base: 24px,
+);
+
+.icon {
+  @each $name, $size in $sizes {
+    &--#{$name} {
+      height: #{$size};
+    }
+  }
+}
