@@ -1,0 +1,10 @@
+.logo {
+  display: flex;
+  flex-wrap: wrap;
+  width: 30px;
+
+  &__icon {
+    flex: 1 0 auto;
+    align-self: center;
+  }
+}
