@@ -1,0 +1,21 @@
+@import "../../styles/variables/palette";
+@import "../../styles/tools/mixins/transition";
+@import "../../styles/tokens/tokens";
+
+.button {
+  @extend %border-radius--base;
+  @include transition(background-color);
+
+  padding: spacing(small);
+  width: 100%;
+
+  background-color: palette(ui, 03);
+  border: none;
+  color: palette(text, 01);
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    background-color: palette(ui, 04);
+  }
+}
