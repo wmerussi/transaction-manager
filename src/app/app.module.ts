@@ -1,11 +1,18 @@
+import { LOCALE_ID, NgModule } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+
+import pt from '@angular/common/locales/pt';
 
 /** Modules */
+import { ComponentsModule } from './components/components.module';
 import { UiModule } from '../ui/ui.module';
 
 /** Components */
 import { AppComponent } from './app.component';
+
+/** Locale */
+registerLocaleData(pt, 'pt-BR');
 
 @NgModule({
   declarations: [
@@ -13,9 +20,15 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
+    ComponentsModule,
     UiModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: 'pt-BR',
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
