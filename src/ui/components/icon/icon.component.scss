@@ -4,6 +4,8 @@ $sizes: (
 );
 
 .icon {
+  display: inline-block;
+
   @each $name, $size in $sizes {
     &--#{$name} {
       height: #{$size};

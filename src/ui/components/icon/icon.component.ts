@@ -12,6 +12,7 @@ export class IconComponent {
 
   public getClasses(): Object {
     return {
+      icon: true,
       [`icon--${this.size}`]: !!this.size,
       [`icon--${this.verticalAlign}`]: !!this.verticalAlign,
     };
