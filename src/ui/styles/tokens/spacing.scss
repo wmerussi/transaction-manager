@@ -1,27 +1,3 @@
-/// Sass function to return all values from a map based on requested keys
-///
-/// @param  {map}           $map  - Map to get values
-/// @param  {string | list} $keys - Keys from map
-/// @return {list}          List of values based on requested keys
-///
-@function map-values-list($map, $keys...) {
-  $values: ();
-
-  @each $key in $keys {
-    @if type-of($key) == list {
-      @each $sub-key in $key {
-        $values: append($values, map-get($map, $sub-key));
-      }
-    } @else {
-      $values: append($values, map-get($map, $key));
-    }
-  }
-
-  @return $values;
-}
-
-
-
 /// Spacing values
 ///
 $spacing: (
@@ -34,10 +10,9 @@ $spacing: (
 /// Sass function to help the usage of spacing map
 ///
 /// @require {map}      $spacing
-/// @require {function} map-values-list
-/// @param   {string | list} $sizes - Key from $spacing or px
-/// @return  {list} List of values from $spacing map and/or the px value
+/// @param   {string | list} $size - Key from $spacing or px
+/// @return  {string} Value from $spacing map
 ///
-@function spacing($sizes...) {
-  @return map-values-list($spacing, $sizes...);
+@function spacing($size) {
+  @return map-get($spacing, $size);
 }

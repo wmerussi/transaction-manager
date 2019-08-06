@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 /** Components */
 import { ButtonComponent } from './button/button.component';
+import { CurrencyComponent } from './currency/currency.component';
 import { IconComponent } from './icon/icon.component';
 import { SelectInputComponent } from './input/select-input/select-input.component';
 import { TextInputComponent } from './input/text-input/text-input.component';
@@ -11,6 +12,7 @@ import { TitledInputComponent } from './input/titled-input/titled-input.componen
 @NgModule({
   declarations: [
     ButtonComponent,
+    CurrencyComponent,
     IconComponent,
     SelectInputComponent,
     TextInputComponent,
@@ -18,6 +20,7 @@ import { TitledInputComponent } from './input/titled-input/titled-input.componen
   ],
   exports: [
     ButtonComponent,
+    CurrencyComponent,
     IconComponent,
     SelectInputComponent,
     TextInputComponent,
