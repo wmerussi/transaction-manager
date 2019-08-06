@@ -1,0 +1,13 @@
+@import "../../../styles/tokens/spacing";
+
+.text-input {
+  &__input {
+    display: block;
+    margin-top: spacing(small);
+    padding: spacing(small);
+    width: 100%;
+
+    border: 1px solid #cbcbcb;
+    border-radius: 5px;
+  }
+}

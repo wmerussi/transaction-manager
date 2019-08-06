@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
   templateUrl: './icon.component.html',
   styleUrls: ['./icon.component.scss'],
 })
-export class Icon {
+export class IconComponent {
   @Input() name: string;
   @Input() size: 'small' | 'base' = 'base';
   @Input() verticalAlign: string;

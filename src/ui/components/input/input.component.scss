@@ -1,0 +1,16 @@
+@import "../../styles/variables/palette";
+@import "../../styles/tokens/tokens";
+
+.input {
+  &__field {
+    @extend %border-radius--base;
+
+    display: block;
+    margin-top: spacing(small);
+    padding: spacing(small);
+    width: 100%;
+
+    background-color: palette(ui, 01);
+    border: 1px solid palette(ui, 02);
+  }
+}

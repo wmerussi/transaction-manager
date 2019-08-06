@@ -1,14 +1,24 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { Icon } from './icon/icon.component';
+/** Components */
+import { IconComponent } from './icon/icon.component';
+import { SelectInputComponent } from './input/select-input/select-input.component';
+import { TextInputComponent } from './input/text-input/text-input.component';
+import { TitledInputComponent } from './input/titled-input/titled-input.component';
 
 @NgModule({
   declarations: [
-    Icon,
+    IconComponent,
+    SelectInputComponent,
+    TextInputComponent,
+    TitledInputComponent,
   ],
   exports: [
-    Icon,
+    IconComponent,
+    SelectInputComponent,
+    TextInputComponent,
+    TitledInputComponent,
   ],
   imports: [
     CommonModule,
