@@ -1,0 +1,18 @@
+/// List of the project available colors
+$colors: (
+  ui: (
+    01: #fff,
+    02: #cbcbcb,
+  ),
+);
+
+/// Sass function to apply a color of $colors map
+///
+/// @param   {string} $type  - Palette type
+/// @param   {string} $color - Palette number of chosen type
+/// @return  {list} Desired color
+///
+@function palette($type, $color) {
+  $palette: map-get($colors, $type);
+  @return map-get($palette, $color);
+}

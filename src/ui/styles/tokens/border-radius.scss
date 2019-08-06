@@ -1,0 +1,11 @@
+$border-radius-values: (
+  base: 5px,
+);
+
+%border-radius{
+  @each $name, $value in $border-radius-values {
+    &--#{$name} {
+      border-radius: $value;
+    }
+  }
+}
