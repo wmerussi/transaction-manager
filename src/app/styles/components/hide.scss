@@ -1,0 +1,15 @@
+@import "../../../ui/styles/tools/mixins/responsive";
+
+$hide-breakpoints: (
+  md,
+);
+
+.hide {
+  @each $bp in $hide-breakpoints {
+    &--#{$bp} {
+      @include responsive($bp) {
+        display: none;
+      }
+    }
+  }
+}
