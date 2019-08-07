@@ -1,0 +1,109 @@
+@import "../ui/styles/variables/palette";
+@import "../ui/styles/tools/mixins/responsive";
+@import "../ui/styles/tokens/spacing";
+
+.app {
+  min-height: 100vh;
+  border-bottom: 8px solid palette(ui, 03);
+
+  &__container {
+    padding: {
+      top: spacing(base);
+      bottom: spacing(base);
+    };
+
+    @include responsive(xl) {
+      display: flex;
+    }
+  }
+
+  &__form {
+    &-button {
+      margin-top: spacing(base);
+    }
+
+    &-item {
+      & + & {
+        margin-top: spacing(base);
+      }
+    }
+
+    @include responsive(md) {
+      display: flex;
+      margin-top: spacing(base);
+
+      &-button {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      &-item {
+        flex: 1;
+
+        & + & {
+          margin: {
+            top: 0;
+            left: spacing(base);
+          }
+        }
+
+        &:nth-child(2) {
+          flex: 2;
+        }
+      }
+    }
+
+    @include responsive(xl) {
+      display: block;
+
+      &-button {
+        display: block;
+      }
+
+      &-item {
+        & + & {
+          margin: {
+            top: spacing(base);
+            left: 0;
+          }
+        }
+      }
+    }
+  }
+
+  &__section-title {
+    margin-top: spacing(large);
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+
+    @include responsive(xl) {
+      margin-top: spacing(base);
+    }
+  }
+
+  &__table {
+    margin-top: spacing(small);
+  }
+
+  &__transaction-input {
+    flex: 1;
+
+    .app__section-title {
+      display: none;
+      margin: 0;
+
+      @include responsive(md) {
+        display: block;
+      }
+    }
+  }
+
+  &__transactions {
+    flex: 2;
+
+    @include responsive(xl) {
+      margin-left: spacing(base);
+    }
+  }
+}
