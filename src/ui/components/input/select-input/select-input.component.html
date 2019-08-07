@@ -1,5 +1,5 @@
 <ui-titled-input [inputId]="inputId" [title]="title">
-  <select class="input__field" [id]="inputId" (change)="onChange($event.target.value)">
+  <select #inputField class="input__field" [id]="inputId" (change)="onChange($event.target.value)">
     <option value=""></option>
     <ng-content></ng-content>
   </select>

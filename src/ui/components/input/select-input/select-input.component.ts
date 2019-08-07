@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 
 @Component({
   selector: 'ui-select-input',
@@ -11,9 +19,15 @@ export class SelectInputComponent implements OnInit {
 
   @Output() onValueChange: EventEmitter<any> = new EventEmitter<any>();
 
+  @ViewChild('inputField', { static: false }) private inputField: ElementRef;
+
   ngOnInit() {
     if (!!this.inputId) { return; }
     this.inputId = new Date().getTime().toString();
+  }
+
+  public clear() {
+    this.inputField.nativeElement.value = '';
   }
 
   public onChange(value: any) {
