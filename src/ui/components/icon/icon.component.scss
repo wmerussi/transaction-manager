@@ -5,10 +5,11 @@ $sizes: (
 
 .icon {
   display: inline-block;
+  color: inherit;
 
   @each $name, $size in $sizes {
     &--#{$name} {
-      height: #{$size};
+      font-size: #{$size};
     }
   }
 }
