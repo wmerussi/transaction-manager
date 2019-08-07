@@ -1,0 +1,38 @@
+<div class="app-main-header">
+  <div class="app-main-header__container container">
+    <ul class="logo" aria-hidden="true">
+      <li class="logo__icon"><ui-icon name="circle" size="small"></ui-icon></li>
+      <li class="logo__icon"><ui-icon name="triangle" size="small"></ui-icon></li>
+      <li class="logo__icon"><ui-icon name="square" size="small"></ui-icon></li>
+      <li class="logo__icon"><ui-icon name="user" size="small"></ui-icon></li>
+    </ul>
+
+    <h1 class="app-main-header__title">Controle financeiro</h1>
+
+    <div class="app-main-header__menu-button">
+      <ui-button type="icon" (onClick)="isMenuOpen = !isMenuOpen">
+        <ui-icon name="bars"></ui-icon>
+      </ui-button>
+    </div>
+
+    <ul class="app-main-header__menu" [class.app-main-header__menu--open]="isMenuOpen">
+      <li class="app-main-header__menu-item app-main-header__menu-close">
+        <ui-button type="icon" (onClick)="isMenuOpen = false">
+          <ui-icon name="times"></ui-icon>
+        </ui-button>
+      </li>
+
+      <li class="app-main-header__menu-item">
+        <a class="app-main-header__menu-link" href="#">Dashboard</a>
+      </li>
+
+      <li class="app-main-header__menu-item">
+        <a class="app-main-header__menu-link" href="#">Resumo</a>
+      </li>
+
+      <li class="app-main-header__menu-item">
+        <a class="app-main-header__menu-link" href="#">Configurações</a>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,93 @@
+@import "../../../ui/styles/variables/palette";
+@import "../../../ui/styles/tools/mixins/mixins";
+@import "../../../ui/styles/tokens/spacing";
+
+.app-main-header {
+  padding: spacing(small) 0;
+  background-color: palette(ui, 02);
+
+  &__container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__menu {
+    @include position(fixed, (top: 0, right: -100%));
+    @include transition(right);
+
+    width: 80vw;
+    max-width: 250px;
+    height: 100%;
+
+    background-color: palette(ui, 03);
+    color: palette(text, 01);
+
+    &--open {
+      right: 0;
+    }
+
+    &-button,
+    &-close {
+      @include responsive(xl) {
+        display: none;
+      }
+    }
+
+    &-item {
+      padding: spacing(base);
+    }
+
+    &-link {
+      display: block;
+      text-align: right;
+      text-decoration: none;
+      cursor: pointer;
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+    }
+
+    @include responsive(xl) {
+      @include position(relative, (top: auto, right: auto));
+
+      display: flex;
+      padding: spacing(small) 0;
+      width: auto;
+      max-width: 100%;
+      height: auto;
+
+      background-color: palette(ui, 01);
+      color: inherit;
+
+      &-item {
+        padding: 0 spacing(base);
+
+        &:nth-child(n + 3) {
+          border-left: 1px solid palette(ui, 02);
+        }
+      }
+    }
+  }
+
+  &__title {
+    flex: 10;
+    text-align: center;
+
+    @include responsive(md) {
+      font-size: 24px;
+    }
+
+    @include responsive(xl) {
+      margin-left: spacing(base);
+      text-align: left;
+    }
+  }
+
+  @include responsive(xl) {
+    padding: spacing(base) 0;
+  }
+}

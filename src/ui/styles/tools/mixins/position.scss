@@ -48,6 +48,10 @@
     $position: fixed;
   }
 
+  @if (nth($options, 1) == "relative") {
+    $position: relative;
+  }
+
   position: $position;
 
   @each $property in $options {
