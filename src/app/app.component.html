@@ -8,23 +8,23 @@
 
         <ul class="app__form">
           <li class="app__form-item">
-            <ui-select-input title="Tipo de transação" (onValueChange)="onTypeChange($event)">
+            <ui-select-input #itemType title="Tipo de transação" (onValueChange)="item.type = $event">
               <option value="buy">Compra</option>
               <option value="sell">Venda</option>
             </ui-select-input>
           </li>
 
           <li class="app__form-item">
-            <ui-text-input title="Nome da mercadoria" (onValueChange)="onItemNameChange($event)"></ui-text-input>
+            <ui-text-input #itemName title="Nome da mercadoria" (onValueChange)="item.name = $event"></ui-text-input>
           </li>
 
           <li class="app__form-item">
-            <ui-text-input title="Valor" (onValueChange)="onItemValueChange($event)"></ui-text-input>
+            <ui-text-input #itemValue title="Valor" (onValueChange)="item.valueToNumber = $event"></ui-text-input>
           </li>
         </ul>
 
         <div class="app__form-button">
-          <ui-button>Adicionar transação</ui-button>
+          <ui-button (onClick)="addTransaction()">Adicionar transação</ui-button>
         </div>
       </ui-box>
     </div>
@@ -44,33 +44,15 @@
         </thead>
 
         <tbody>
-          <tr class="table__row">
+          <tr class="table__row" *ngFor="let item of items">
             <td class="table__cell">
-              <ui-icon name="plus" size="small"></ui-icon>
+              <ui-icon [name]="getIcon(item)" size="small"></ui-icon>
             </td>
-            <td class="table__cell">Lorem ipsum dolor sit amet consectetur</td>
-            <td class="table__cell table__cell--value">
-              <ui-currency [value]="12999"></ui-currency>
-            </td>
-          </tr>
 
-          <tr class="table__row">
-            <td class="table__cell">
-              <ui-icon name="minus" size="small"></ui-icon>
-            </td>
-            <td class="table__cell">Lorem ipsum dolor sit amet consectetur</td>
-            <td class="table__cell table__cell--value">
-              <ui-currency [value]="12999"></ui-currency>
-            </td>
-          </tr>
+            <td class="table__cell">{{ item.name }}</td>
 
-          <tr class="table__row">
-            <td class="table__cell">
-              <ui-icon name="plus" size="small"></ui-icon>
-            </td>
-            <td class="table__cell">Lorem ipsum dolor sit amet consectetur</td>
             <td class="table__cell table__cell--value">
-              <ui-currency [value]="12999"></ui-currency>
+              <ui-currency [value]="item.value"></ui-currency>
             </td>
           </tr>
         </tbody>
@@ -80,8 +62,8 @@
             <td class="table__cell"></td>
             <td class="table__cell">Total</td>
             <td class="table__cell table__cell--value">
-              <ui-currency [value]="12999"></ui-currency>
-              <span class="table__balance-status">[LUCRO]</span>
+              <ui-currency [value]="getTotal()"></ui-currency>
+              <span class="table__balance-status">[{{ getProfitStatus() }}]</span>
             </td>
           </tr>
         </tfoot>
