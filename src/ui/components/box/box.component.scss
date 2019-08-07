@@ -1,0 +1,9 @@
+@import "../../styles/variables/palette";
+@import "../../styles/tokens/tokens";
+
+.box {
+  @extend %border-radius--base;
+
+  padding: spacing(base);
+  border: 1px solid palette(ui, 02);
+}

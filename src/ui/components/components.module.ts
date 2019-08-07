@@ -2,6 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 /** Components */
+import { BoxComponent } from './box/box.component';
 import { ButtonComponent } from './button/button.component';
 import { CurrencyComponent } from './currency/currency.component';
 import { IconComponent } from './icon/icon.component';
@@ -11,6 +12,7 @@ import { TitledInputComponent } from './input/titled-input/titled-input.componen
 
 @NgModule({
   declarations: [
+    BoxComponent,
     ButtonComponent,
     CurrencyComponent,
     IconComponent,
@@ -19,6 +21,7 @@ import { TitledInputComponent } from './input/titled-input/titled-input.componen
     TitledInputComponent,
   ],
   exports: [
+    BoxComponent,
     ButtonComponent,
     CurrencyComponent,
     IconComponent,
