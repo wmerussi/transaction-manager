@@ -7,7 +7,7 @@
     @extend %border-radius--base;
     @include transition(background-color);
 
-    padding: spacing(small);
+    padding: spacing(small) spacing(large);
     width: 100%;
 
     background-color: palette(ui, 03);
