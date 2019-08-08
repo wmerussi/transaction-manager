@@ -71,6 +71,19 @@
     }
   }
 
+  &__incomplete {
+    display: block;
+    margin-top: spacing(xsmall);
+    font-size: 14px;
+    color: palette(text, 02);
+  }
+
+  &__no-transactions {
+    display: block;
+    margin-top: spacing(base);
+    text-align: center;
+  }
+
   &__section-title {
     margin-top: spacing(large);
     font-size: 18px;

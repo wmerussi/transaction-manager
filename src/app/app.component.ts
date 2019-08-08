@@ -1,11 +1,11 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 
-import {BreakpointService} from './services/breakpoint.service';
-import {DatabaseService} from './services/database.service';
+import { BreakpointService } from './services/breakpoint.service';
+import { DatabaseService } from './services/database.service';
 
-import {Item, ItemType} from './models/item.model';
-import {TextInputComponent} from '../ui/components/input/text-input/text-input.component';
-import {SelectInputComponent} from '../ui/components/input/select-input/select-input.component';
+import { Item, ItemType } from './models/item.model';
+import { TextInputComponent } from '../ui/components/input/text-input/text-input.component';
+import { SelectInputComponent } from '../ui/components/input/select-input/select-input.component';
 
 enum ProfitStatus {
   LOSS = 'prejuízo',
@@ -19,8 +19,8 @@ enum ProfitStatus {
   providers: [DatabaseService],
 })
 export class AppComponent implements OnInit, OnDestroy {
-
   public hideBox: boolean;
+  public isIncomplete: boolean;
   public item: Item = new Item();
   public items: Item[] = [];
 
@@ -42,8 +42,11 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public addTransaction() {
+    if (this.item.isIncomplete()) { return this.isIncomplete = true; }
+
     const item = Object.assign({}, this.item);
     const items = Object.assign([], this.items);
+
     this.items = items.concat(item);
     this.db.add('transactions', JSON.stringify(this.items));
 
@@ -69,5 +72,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
       return total + item.value;
     }, 0);
+  }
+
+  public updateField(name: string, value: string | number) {
+    this.item[name] = value;
+    this.isIncomplete = false;
   }
 }

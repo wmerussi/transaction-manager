@@ -8,24 +8,31 @@
 
         <ul class="app__form">
           <li class="app__form-item">
-            <ui-select-input #itemType title="Tipo de transação" (onValueChange)="item.type = $event">
+            <ui-select-input #itemType title="Tipo de transação" (onValueChange)="updateField('type', $event)">
               <option value="buy">Compra</option>
               <option value="sell">Venda</option>
             </ui-select-input>
           </li>
 
           <li class="app__form-item">
-            <ui-text-input #itemName title="Nome da mercadoria" (onValueChange)="item.name = $event"></ui-text-input>
+            <ui-text-input #itemName title="Nome da mercadoria" (onValueChange)="updateField('name', $event)"></ui-text-input>
           </li>
 
           <li class="app__form-item">
-            <ui-text-input #itemValue title="Valor" (onValueChange)="item.valueToNumber = $event"></ui-text-input>
+            <ui-text-input
+              #itemValue
+              [isCurrency]="true"
+              title="Valor"
+              (onValueChange)="updateField('valueToNumber', $event)"
+            ></ui-text-input>
           </li>
         </ul>
 
         <div class="app__form-button">
           <ui-button (onClick)="addTransaction()">Adicionar transação</ui-button>
         </div>
+
+        <span class="app__incomplete" *ngIf="isIncomplete">Preencha todos os campos</span>
       </ui-box>
     </div>
 
@@ -34,7 +41,9 @@
     <div class="app__transactions">
       <h2 class="app__section-title">Extrato de transações</h2>
 
-      <table class="app__table table">
+      <span class="app__no-transactions" *ngIf="!items.length">Não há transações cadastradas</span>
+
+      <table class="app__table table" *ngIf="items.length">
         <thead class="table__head">
           <tr class="table__row">
             <td class="table__cell"></td>
