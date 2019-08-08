@@ -34,7 +34,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.breakpoint.get().subscribe(md => this.hideBox = !md);
-    this.items = JSON.parse(this.db.get('transactions')).map(item => new Item(item));
+
+    const items = this.db.get('transactions');
+    if (!items) { return; }
+    this.items = JSON.parse(items).map(item => new Item(item));
   }
 
   ngOnDestroy() {
