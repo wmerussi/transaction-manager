@@ -15,6 +15,7 @@ import {
 })
 export class TextInputComponent implements OnInit {
   @Input() inputId: string;
+  @Input() isCurrency: boolean;
   @Input() title: string;
 
   @Output() onValueChange: EventEmitter<string> = new EventEmitter<string>();
@@ -30,7 +31,38 @@ export class TextInputComponent implements OnInit {
     this.inputField.nativeElement.value = '';
   }
 
-  public onChange(value: string) {
-    this.onValueChange.emit(value);
+  public currencyMask(value: string): string {
+    let filteredNumbers = this.filterNumbers(value);
+
+    if (filteredNumbers.length < 3) {
+      filteredNumbers = filteredNumbers.padStart(3, '0');
+    }
+
+    const formattedCurrency = filteredNumbers.split('').reverse().reduce((value, num, i) => {
+      let v = value.concat(num);
+
+      if (i === 1) { v = v.concat(','); }
+
+      if (i > 1 && (i - 1) % 3 === 0 && (i + 1) !== filteredNumbers.length) { v = v.concat('.'); }
+
+      return v;
+    }, []).reverse().join('');
+
+    return `R$ ${formattedCurrency}`;
+  }
+
+  public filterNumbers(value: string): string {
+    return value.replace(/\D+/g, '').replace(/^0+|\s+/, '');
+  }
+
+  public onKeyUp(value: any) {
+    let emitValue = value;
+
+    if (this.isCurrency) {
+      this.inputField.nativeElement.value = this.currencyMask(value);
+      emitValue = Number(this.filterNumbers(value)) / 100;
+    }
+
+    this.onValueChange.emit(emitValue.toString());
   }
 }
