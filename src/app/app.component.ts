@@ -45,7 +45,13 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public addTransaction() {
-    if (this.item.isIncomplete()) { return this.isIncomplete = true; }
+    if (this.item.isIncomplete()) {
+      if (!this.item.value) { this.itemValue.focus(); }
+      if (!this.item.name) { this.itemName.focus(); }
+      if (!this.item.type) { this.itemType.focus(); }
+
+      return this.isIncomplete = true;
+    }
 
     const item = Object.assign({}, this.item);
     const items = Object.assign([], this.items);
@@ -57,6 +63,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.itemName.clear();
     this.itemValue.clear();
     this.item.clear();
+    this.itemType.focus();
   }
 
   public getIcon(item: Item) {

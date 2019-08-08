@@ -56,6 +56,10 @@ export class TextInputComponent implements OnInit {
     return value.replace(/\D+/g, '').replace(/^0+|\s+/, '');
   }
 
+  public focus() {
+    this.inputField.nativeElement.focus();
+  }
+
   public onKeyUp(event: any) {
     if (event.which === 13 || event.keyCode === 13) {
       return this.onEnterKey.emit();

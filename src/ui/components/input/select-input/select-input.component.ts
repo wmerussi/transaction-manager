@@ -30,6 +30,10 @@ export class SelectInputComponent implements OnInit {
     this.inputField.nativeElement.value = '';
   }
 
+  public focus() {
+    this.inputField.nativeElement.focus();
+  }
+
   public onChange(value: any) {
     this.onValueChange.emit(value);
   }
