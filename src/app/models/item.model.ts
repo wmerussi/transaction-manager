@@ -23,4 +23,8 @@ export class Item extends Model {
     delete this.type;
     delete this.value;
   }
+
+  public isIncomplete(): boolean {
+    return !this.name || !this.type || !this.value;
+  }
 }
