@@ -7,6 +7,8 @@ import { Item, ItemType } from './models/item.model';
 import { TextInputComponent } from '../ui/components/input/text-input/text-input.component';
 import { SelectInputComponent } from '../ui/components/input/select-input/select-input.component';
 
+export const LOCALSTORAGE_ITEM = 'transactions';
+
 enum ProfitStatus {
   LOSS = 'prejuízo',
   PROFIT = 'lucro',
@@ -35,7 +37,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.breakpoint.get().subscribe(md => this.hideBox = !md);
 
-    const items = this.db.get('transactions');
+    const items = this.db.get(LOCALSTORAGE_ITEM);
     if (!items) { return; }
     this.items = JSON.parse(items).map(item => new Item(item));
   }
