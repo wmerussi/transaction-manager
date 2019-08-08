@@ -15,7 +15,12 @@
           </li>
 
           <li class="app__form-item">
-            <ui-text-input #itemName title="Nome da mercadoria" (onValueChange)="updateField('name', $event)"></ui-text-input>
+            <ui-text-input
+              #itemName
+              title="Nome da mercadoria"
+              (onEnterKey)="addTransaction()"
+              (onValueChange)="updateField('name', $event)"
+            ></ui-text-input>
           </li>
 
           <li class="app__form-item">
@@ -23,6 +28,7 @@
               #itemValue
               [isCurrency]="true"
               title="Valor"
+              (onEnterKey)="addTransaction()"
               (onValueChange)="updateField('valueToNumber', $event)"
             ></ui-text-input>
           </li>

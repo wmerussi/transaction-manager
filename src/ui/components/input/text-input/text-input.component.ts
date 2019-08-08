@@ -18,6 +18,7 @@ export class TextInputComponent implements OnInit {
   @Input() isCurrency: boolean;
   @Input() title: string;
 
+  @Output() onEnterKey: EventEmitter<any> = new EventEmitter<any>();
   @Output() onValueChange: EventEmitter<string> = new EventEmitter<string>();
 
   @ViewChild('inputField', { static: false }) private inputField: ElementRef;
@@ -55,12 +56,16 @@ export class TextInputComponent implements OnInit {
     return value.replace(/\D+/g, '').replace(/^0+|\s+/, '');
   }
 
-  public onKeyUp(value: any) {
-    let emitValue = value;
+  public onKeyUp(event: any) {
+    if (event.which === 13 || event.keyCode === 13) {
+      return this.onEnterKey.emit();
+    }
+
+    let emitValue = event.target.value;
 
     if (this.isCurrency) {
-      this.inputField.nativeElement.value = this.currencyMask(value);
-      emitValue = Number(this.filterNumbers(value)) / 100;
+      this.inputField.nativeElement.value = this.currencyMask(emitValue);
+      emitValue = Number(this.filterNumbers(emitValue)) / 100;
     }
 
     this.onValueChange.emit(emitValue.toString());
