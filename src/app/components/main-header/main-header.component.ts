@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./main-header.component.scss'],
 })
 export class MainHeaderComponent {
+  public isMenuOpen: boolean;
+
   public toggleSideMenu() {
     console.log('toggleSideMenu');
   }

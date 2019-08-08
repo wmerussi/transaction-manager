@@ -1,5 +1,3 @@
-import { Injectable } from '@angular/core';
-
 import { BehaviorSubject, Observable } from 'rxjs';
 
 import { Limit } from '../models/limit.model';
@@ -14,7 +12,6 @@ const errorText = {
   invalidRange: 'breakpoint must be smaller than modifier value',
 };
 
-@Injectable()
 export class BreakpointService {
   private onBreakpoint: BehaviorSubject<boolean> = new BehaviorSubject(false);
   private limits: Limit[] = [];
